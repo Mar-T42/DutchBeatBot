@@ -2,7 +2,7 @@ require('dotenv').config();
 const Discord = require('discord.js');
 const client= new Discord.Client();
 
-const BOT_PREFIX = '/';
+const BOT_PREFIX = '!';
 const BOT_PING_COMMAND = 'ping';
 
 client.on('ready', () => {
