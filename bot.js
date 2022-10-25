@@ -1,8 +1,12 @@
 require('dotenv').config();
 const Discord = require('discord.js');
 const client= new Discord.Client({
-  intents: [Object.values(Discord.Intents.FLAGS).reduce((acc, p) => acc | p, 0)],
-  partials: ["REACTION"]
+  intents: [
+		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMessages,
+		GatewayIntentBits.MessageContent,
+		GatewayIntentBits.GuildMembers,
+	],
 });
 
 const BOT_PREFIX = '!';
