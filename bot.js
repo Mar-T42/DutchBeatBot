@@ -1,16 +1,12 @@
 require('dotenv').config();
 const Discord = require('discord.js');
-const { Client, Intents } = new Discord.Client();
-Client.config({ 
-    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
-    partials:  [`MESSAGE`]
-});
+const client= new Discord.Client();
 
 const BOT_PREFIX = '/';
 const BOT_PING_COMMAND = 'ping';
 
 client.on('ready', () => {
-  console.log(`Logged in as ${Client.user.tag}!.`);
+  console.log(`Logged in as ${client.user.tag}!.`);
   console.log(`Our Kitchen 3.0 DutchBeatBot is alive AND kicking!!`);
 });
 
