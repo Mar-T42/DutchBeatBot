@@ -21,7 +21,7 @@ client.on('messageDelete', msg => {
 );
 
 client.on("message", message => {
-    if (message.content.toLowercase() === 'i love dutchbeat') {
+    if (message.content.toLowerCase() === 'i love dutchbeat') {
         message.react('❤️');
     }
 })
