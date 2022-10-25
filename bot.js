@@ -1,35 +1,36 @@
 require('dotenv').config();
-const { Client, GatewayIntentBits } = require('discord.js');
-const client = new Client({ 
-    intents: [GatewayIntentBits.Guilds] ,
+const Discord = require('discord.js');
+const { Client, Intents } = new Discord.Client();
+Client.config({ 
+    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
     partials:  [`MESSAGE`]
 });
 
 const BOT_PREFIX = '/';
 const BOT_PING_COMMAND = 'ping';
 
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!.`);
+Client.on('ready', () => {
+  console.log(`Logged in as ${Client.user.tag}!.`);
   console.log(`Our Kitchen 3.0 DutchBeatBot is alive AND kicking!!`);
 });
 
-client.on('interactionCreate', async interaction => {
+Client.on('interactionCreate', async interaction => {
   if (!interaction.isChatInputCommand()) return;
     replyPongWhenPingEntered(interaction);
 });
 
-client.on('messageDelete', msg => {
+Client.on('messageDelete', msg => {
         msg.channel.send('Eh.. stop deleting messages please! History is history..');
     }
 );
 
-client.on("message", message => {
+Client.on("message", message => {
     if (message.content.toLowercase() === 'i love dutchbeat') {
         message.react('❤️');
     }
 })
 
-const replyPongWhenPingEntered = async (interaction) => {
+async function replyPongWhenPingEntered(interaction) {
     if (interaction.commandName === `${BOT_PREFIX}${BOT_PING_COMMAND}`) {ProcessingInstructionp
         await interaction.reply('Pong!');
       }
