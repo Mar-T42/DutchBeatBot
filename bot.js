@@ -36,15 +36,8 @@ client.on("message", message => {
   }
 })
 
-client.on('interactionCreate', async interaction => {
-  console.log(interaction.commandName);
-  if (!interaction.isChatInputCommand())
-    return;
-  replyPongWhenPingEntered(interaction);
-});
-
-async function replyPongWhenPingEntered(interaction) {
-  msg.channel.send('Pong!');
+async function replyPongWhenPingEntered(message) {
+  message.channel.send('Pong!');
 }
 
 client.login(process.env.BOT_TOKEN);
