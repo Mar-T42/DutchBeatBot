@@ -1,13 +1,18 @@
 require('dotenv').config();
 const Discord = require('discord.js');
-const client= new Discord.Client({
+const client= new Discord.Client(
+  { intents: [ 'DIRECT_MESSAGES', 'GUILD_MESSAGES' ] }
+);
+
+/*  {
   intents: [
 		GatewayIntentBits.Guilds,
 		GatewayIntentBits.GuildMessages,
 		GatewayIntentBits.MessageContent,
 		GatewayIntentBits.GuildMembers,
 	],
-});
+
+} */
 
 const BOT_PREFIX = '!';
 const BOT_PING_COMMAND = 'ping';
