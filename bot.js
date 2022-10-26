@@ -31,6 +31,9 @@ client.on("message", message => {
   if (message.content.toLowerCase() === 'i love dutchbeat') {
     message.react('❤️');
   }
+  if (message.content.toLowerCase() === `${BOT_PREFIX}${BOT_PING_COMMAND}`){
+    replyPongWhenPingEntered(message); 
+  }
 })
 
 client.on('interactionCreate', async interaction => {
@@ -41,9 +44,7 @@ client.on('interactionCreate', async interaction => {
 });
 
 async function replyPongWhenPingEntered(interaction) {
-  if (interaction.commandName === `${BOT_PREFIX}${BOT_PING_COMMAND}`) {
-    await interaction.reply('Pong!');
-  }
+  msg.channel.send('Pong!');
 }
 
 client.login(process.env.BOT_TOKEN);
