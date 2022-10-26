@@ -40,7 +40,7 @@ client.on("message", message => {
 })
 
 async function replyPongWhenPingEntered(interaction) {
-    if (interaction.commandName === `${BOT_PREFIX}${BOT_PING_COMMAND}`) {ProcessingInstructionp
+    if (interaction.commandName === `${BOT_PREFIX}${BOT_PING_COMMAND}`) {
         await interaction.reply('Pong!');
       }
 }
