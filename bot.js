@@ -48,7 +48,6 @@ async function searchAndReplaceBlackList(message) {
   console.log(message.content.toLowerCase().includes('fuck'));
   console.log('BLACKLIST: ', BLACKLIST.BLACKLIST);
   console.log('BLACKLIST is array: ', Array.isArray(BLACKLIST.BLACKLIST));
-  console.log('BLACKLIST is array: ', Array.isArray({BLACKLIST.BLACKLIST}));
   BLACKLIST.BLACKLIST.map(
     (item) => console.log(item)
   );
