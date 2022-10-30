@@ -1,6 +1,6 @@
 require('dotenv').config();
+require('./blacklist.js');
 const Discord = require('discord.js');
-const BLACKLIST = require('./blacklist.js');
 const client = new Discord.Client(
   { intents: ['DIRECT_MESSAGES', 'GUILD_MESSAGES'] }
 );

@@ -1,4 +1,4 @@
-exports =  [
+exports.BLACKLIST =  [
     {
         word: 'fuck',
         replace: 'football',
