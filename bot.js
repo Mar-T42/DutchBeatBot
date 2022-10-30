@@ -50,7 +50,7 @@ async function searchAndReplaceBlackList(message) {
   console.log('BLACKLIST is array: ', Array.isArray(BLACKLIST.BLACKLIST));
 
   BLACKLIST.BLACKLIST.map(async (item) => {
-    alteredMessage = alteredMessage.replace(item.word, item.replace);
+    alteredMessage = alteredMessage.content.replace(item.word, item.replace);
     await message.edit(alteredMessage);
   });
 }
