@@ -46,13 +46,13 @@ async function searchAndReplaceBlackList(message) {
   let alteredMessage = message; // Vulnerable to bugs!
   console.log(message.content);
   console.log(message.content.toLowerCase().includes('fuck'));
-  console.log('BLACKLIST: ', BLACKLIST);
-  console.log('BLACKLIST is array: ', Array.isArray(BLACKLIST));
-  console.log('BLACKLIST is array: ', Array.isArray({BLACKLIST}));
-  BLACKLIST.map(
-    ({item}) => console.log(item)
+  console.log('BLACKLIST: ', BLACKLIST.BLACKLIST);
+  console.log('BLACKLIST is array: ', Array.isArray(BLACKLIST.BLACKLIST));
+  console.log('BLACKLIST is array: ', Array.isArray({BLACKLIST.BLACKLIST}));
+  BLACKLIST.BLACKLIST.map(
+    (item) => console.log(item)
   );
-  // BLACKLIST.map(async ({item}) => {
+  // BLACKLIST.BLACKLIST.map(async (item) => {
   //  alteredMessage = alteredMessage.replace(item.word, item.replace);
   //  await message.edit(alteredMessage);
   // });
