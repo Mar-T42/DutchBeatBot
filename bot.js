@@ -32,8 +32,8 @@ client.on("message", message => {
   if (message.content.toLowerCase() === 'i love dutchbeat') {
     message.react('❤️');
   }
-  if (message.content.toLowerCase() === `${BOT_PREFIX}${BOT_PING_COMMAND}`){
-    replyPongWhenPingEntered(message); 
+  if (message.content.toLowerCase() === `${BOT_PREFIX}${BOT_PING_COMMAND}`) {
+    replyPongWhenPingEntered(message);
   }
   searchAndReplaceBlackList(message);
 })
@@ -43,10 +43,14 @@ async function replyPongWhenPingEntered(message) {
 }
 
 async function searchAndReplaceBlackList(message) {
-  const oldMessage = message;
+  let alteredMessage = message; // Vulnerable to bugs!
   console.log(message.content);
   console.log(message.content.toLowerCase().includes('fuck'));
   console.log(Object.keys(BLACKLIST));
+  BLACKLIST.map((item) => {
+    alteredMessage = alteredMessage, replace(item.word, item.replace);
+  });
+  await message.edit(alteredMessage);
 }
 
 client.login(process.env.BOT_TOKEN);
