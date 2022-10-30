@@ -43,14 +43,14 @@ async function replyPongWhenPingEntered(message) {
 }
 
 async function searchAndReplaceBlackList(message) {
-  let alteredMessage = message; // Vulnerable to bugs!
+  let alteredMessage = message.content; // Vulnerable to bugs!
   console.log(message.content);
   console.log(message.content.toLowerCase().includes('fuck'));
   console.log('BLACKLIST: ', BLACKLIST.BLACKLIST);
   console.log('BLACKLIST is array: ', Array.isArray(BLACKLIST.BLACKLIST));
 
   BLACKLIST.BLACKLIST.map(async (item) => {
-    alteredMessage = alteredMessage.content.replace(item.word, item.replace);
+    alteredMessage = alteredMessage.replace(item.word, item.replace);
     await message.edit(alteredMessage);
   });
 }
