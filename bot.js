@@ -46,7 +46,8 @@ async function searchAndReplaceBlackList(message) {
   let alteredMessage = message; // Vulnerable to bugs!
   console.log(message.content);
   console.log(message.content.toLowerCase().includes('fuck'));
-  console.log(BLACKLIST);
+  console.log('BLACKLIST: ', BLACKLIST);
+  console.log('BLACKLIST is array: ', Array.isArray(BLACKLIST));
   BLACKLIST.map(
     ({item}) => console.log(item)
   );
