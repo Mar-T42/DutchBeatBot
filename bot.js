@@ -43,8 +43,10 @@ async function replyPongWhenPingEntered(message) {
 }
 
 async function searchAndReplaceBlackList(message) {
+  const oldMessage = message;
   console.log(message.content);
   console.log(message.content.toLowerCase().includes('fuck'));
+  console.log(Object,keys(BLACKLIST));
 }
 
 client.login(process.env.BOT_TOKEN);
