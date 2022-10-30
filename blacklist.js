@@ -1,4 +1,4 @@
-export default BLACKLIST =
+const BLACKLIST =
     [
         {
             word: 'fuck',
@@ -9,3 +9,4 @@ export default BLACKLIST =
             replace: 'lady',
         },
     ];
+exports.BLACKLIST = BLACKLIST;
