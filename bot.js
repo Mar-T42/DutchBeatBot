@@ -47,10 +47,10 @@ async function searchAndReplaceBlackList(message) {
   console.log(message.content);
   console.log(message.content.toLowerCase().includes('fuck'));
   console.log(BLACKLIST);
-  BLACKLIST.map((item) => {
+  BLACKLIST.map(async (item) => {
     alteredMessage = alteredMessage.replace(item.word, item.replace);
+    await message.edit(alteredMessage);
   });
-  await message.edit(alteredMessage);
 }
 
 client.login(process.env.BOT_TOKEN);
