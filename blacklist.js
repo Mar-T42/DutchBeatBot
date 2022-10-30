@@ -1,4 +1,4 @@
-export const BLACKLIST =
+const BLACKLIST =
     [
         {
             word: 'fuck',
