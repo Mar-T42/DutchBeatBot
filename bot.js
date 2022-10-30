@@ -35,7 +35,7 @@ client.on("message", message => {
   if (message.content.toLowerCase() === `${BOT_PREFIX}${BOT_PING_COMMAND}`) {
     replyPongWhenPingEntered(message);
   }
-  searchAndReplaceBlackList(message);
+  // searchAndReplaceBlackList(message);
 })
 
 async function replyPongWhenPingEntered(message) {
@@ -54,5 +54,27 @@ async function searchAndReplaceBlackList(message) {
     await message.edit(alteredMessage);
   });
 }
+
+/*
+PLAY WITH THIS!!
+const { MessageEmbed } = require('discord.js')
+module.exports = {
+  run: async (client, message, args) => {
+    const msg = new MessageEmbed()
+      .setTitle("Pong!")
+      .setColor(0xE67E22)
+      .setTimestamp()
+      .setDescription(`API:\nWeb Socket:`);
+    message.channel.send(msg)
+      .then(m => {
+        msg.setDescription(`API: ${m.createdTimestamp - message.createdTimestamp}ms.\nWeb Socket: ${Math.round(client.ws.ping)}ms.`)
+        m.edit(msg)
+      })
+    message.delete()
+  },
+  aliases: [],
+  description: 'Test API Latency'
+}
+*/
 
 client.login(process.env.BOT_TOKEN);
