@@ -1,5 +1,6 @@
 require('dotenv').config();
 const Discord = require('discord.js');
+const BLACKLIST = require('./blacklist');
 const client = new Discord.Client(
   { intents: ['DIRECT_MESSAGES', 'GUILD_MESSAGES'] }
 );
@@ -34,10 +35,16 @@ client.on("message", message => {
   if (message.content.toLowerCase() === `${BOT_PREFIX}${BOT_PING_COMMAND}`){
     replyPongWhenPingEntered(message); 
   }
+  searchAndReplaceBlackList(message);
 })
 
 async function replyPongWhenPingEntered(message) {
   message.channel.send('Pong!');
+}
+
+async function searchAndReplaceBlackList(message) {
+  console.log(message);
+  console.log(message.toLowerCase(includes('fuck')));
 }
 
 client.login(process.env.BOT_TOKEN);
