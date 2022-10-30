@@ -1,11 +1,9 @@
 const BLACKLIST =
     [
         {
-            word: 'fuck',
-            replace: 'f*ck'
+            fuck: 'football',
         },
         {
-            word: 'whore',
-            replace: 'lady'
+            whore: 'lady'
         },
     ];
