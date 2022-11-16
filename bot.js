@@ -35,9 +35,9 @@ bot.on("message", message => {
   if (message.content.toLowerCase() === `${BOT_PREFIX}${BOT_PING_COMMAND}`) {
     if (process.env.HOME === process.env.LOCAL) {
       console.log(`Recognized environment from variable LOCAL and is equal to: ${process.env.HOME}`);
-      replyPongWhenPingEntered('Local DEV/TEST bot: ', message);
+      replyPongWhenPingEntered(process.env.LOCALNAME, message);
     } else {
-      console.log(`Did not recognize environment from variable LOCAL but is equal to: ${process.env.HOME}`);
+      console.log(`Unrecognized environment!!!!`);
       console.log(process.env.LOCAL);
       replyPongWhenPingEntered('Remote PROD bot: ', message);
     }
