@@ -38,6 +38,7 @@ bot.on("message", message => {
       replyPongWhenPingEntered('Local DEV/TEST bot: ', message);
     } else {
       console.log(`Did not recognize environment from variable LOCAL but is equal to: ${process.env.HOME}`);
+      console.log(process.env.LOCAL);
       replyPongWhenPingEntered('Remote PROD bot: ', message);
     }
 
