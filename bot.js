@@ -1,7 +1,7 @@
 require('dotenv').config();
 const BLACKLIST = require('./blacklist.js');
 const Discord = require('discord.js');
-const client = new Discord.Client(
+const bot = new Discord.Client(
   { intents: ['DIRECT_MESSAGES', 'GUILD_MESSAGES'] }
 );
 
@@ -18,28 +18,35 @@ const client = new Discord.Client(
 const BOT_PREFIX = '!';
 const BOT_PING_COMMAND = 'ping';
 
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!.`);
+bot.on('ready', () => {
+  console.log(`Logged in as ${bot.user.tag}!.`);
   console.log(`Our Kitchen 3.0 DutchBeatBot is alive AND kicking!!`);
 });
 
-client.on('messageDelete', msg => {
+bot.on('messageDelete', msg => {
   msg.channel.send('Eh.. stop deleting messages please! History is history..');
 }
 );
 
-client.on("message", message => {
+bot.on("message", message => {
   if (message.content.toLowerCase() === 'i love dutchbeat') {
     message.react('❤️');
   }
   if (message.content.toLowerCase() === `${BOT_PREFIX}${BOT_PING_COMMAND}`) {
-    replyPongWhenPingEntered(message);
+    if (process.env.HOME === process.env.LOCAL) {
+      console.log(`Recognized environment from variable LOCAL and is equal to: ${process.env.HOME}`);
+      replyPongWhenPingEntered('Local DEV/TEST bot: ', message);
+    } else {
+      console.log(`Did not recognize environment from variable LOCAL but is equal to: ${process.env.HOME}`);
+      replyPongWhenPingEntered('Remote PROD bot: ', message);
+    }
+
   }
   // searchAndReplaceBlackList(message);
 })
 
-async function replyPongWhenPingEntered(message) {
-  message.channel.send('Pong!');
+async function replyPongWhenPingEntered(env, message) {
+  message.channel.send(`${env} - pong!`);
 }
 
 async function searchAndReplaceBlackList(message) {
@@ -59,7 +66,7 @@ async function searchAndReplaceBlackList(message) {
 PLAY WITH THIS!!
 const { MessageEmbed } = require('discord.js')
 module.exports = {
-  run: async (client, message, args) => {
+  run: async (bot, message, args) => {
     const msg = new MessageEmbed()
       .setTitle("Pong!")
       .setColor(0xE67E22)
@@ -67,7 +74,7 @@ module.exports = {
       .setDescription(`API:\nWeb Socket:`);
     message.channel.send(msg)
       .then(m => {
-        msg.setDescription(`API: ${m.createdTimestamp - message.createdTimestamp}ms.\nWeb Socket: ${Math.round(client.ws.ping)}ms.`)
+        msg.setDescription(`API: ${m.createdTimestamp - message.createdTimestamp}ms.\nWeb Socket: ${Math.round(bot.ws.ping)}ms.`)
         m.edit(msg)
       })
     message.delete()
@@ -77,4 +84,4 @@ module.exports = {
 }
 */
 
-client.login(process.env.BOT_TOKEN);
+bot.login(process.env.BOT_TOKEN);
