@@ -38,7 +38,7 @@ bot.on("message", message => {
       replyPongWhenPingEntered(process.env.LOCALNAME, message);
     } else {
       console.log(`Unrecognized environment!!!!`);
-      console.log(process.env.LOCAL);
+      console.log(process.env.HOME);
       replyPongWhenPingEntered('Remote PROD bot: ', message);
     }
 
